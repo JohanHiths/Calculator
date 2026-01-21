@@ -4,29 +4,36 @@ on:
   push:
     tags:
       - '*'
-    release:
-      -created
+  release:
+    types: [created]
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      steps:
-        - uses: actions/checkout@v6.0.2
-        - name: SET UP JDK
-          uses: actions/setup-java@5.1.0
-          with:
-                java-version: '25'
-                distribution: 'temurin'
-                server-id: 'github'
-                settings-path: ${{ github.workspace }}
-        - name: Set project version from tag
-          run:  |
-          # Remove v from tag name
-            CLEAN_VERSION=${GITHUB_REF_NAME#v}
-            mvn versions:set -DnewVersion=$CLEAN_VERSION -DgenerateBackupPoms=false
-        - name: Publish with Maven
-          run: mvn -B deploy
-          env:
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          server-id: github
+          settings-path: ${{ github.workspace }}
+
+      - name: Set project version from tag
+        shell: bash
+        run: |
+          # Example: v1.2.3 -> 1.2.3
+          CLEAN_VERSION="${GITHUB_REF_NAME#v}"
+          mvn -B versions:set -DnewVersion="$CLEAN_VERSION" -DgenerateBackupPoms=false
+
+      - name: Publish with Maven
+        run: mvn -B deploy
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
