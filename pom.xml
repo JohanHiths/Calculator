@@ -32,17 +32,12 @@
 
     </dependencies>
 
+
     <distributionManagement>
         <repository>
-            <id>github-calculator</id>
-            <name>GitHub Packages - Calculator</name>
+            <id>github</id>
             <url>https://maven.pkg.github.com/JohanHiths/Calculator</url>
         </repository>
-        <snapshotRepository>
-            <id>github-calculator</id>
-            <name>GitHub Packages - Calculator Snapshots</name>
-            <url>https://maven.pkg.github.com/JohanHiths/Calculator</url>
-        </snapshotRepository>
     </distributionManagement>
     <build>
         <plugins>
