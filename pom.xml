@@ -29,16 +29,16 @@
             <version>3.27.6</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
-
-    <distributionManagement>
+    <repositories>
         <repository>
             <id>github-calculator</id>
-            <name>GitHub Packages</name>
+            <name>GitHub Packages - Calculator</name>
             <url>https://maven.pkg.github.com/JohanHiths/Calculator</url>
         </repository>
-    </distributionManagement>
+    </repositories>
     <build>
         <plugins>
             <plugin>

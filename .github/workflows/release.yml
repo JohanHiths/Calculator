@@ -11,7 +11,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       packages: write
 
     steps:
@@ -21,17 +21,14 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: '21'
-          server-id: github
-          settings-path: ${{ github.workspace }}
-
+          distribution: 'temurin'
+          java-version: '25'
+          cache: 'maven'
       - name: Set project version from tag
-        shell: bash
         run: |
           # Example: v1.2.3 -> 1.2.3
           CLEAN_VERSION="${GITHUB_REF_NAME#v}"
-          mvn -B versions:set -DnewVersion="$CLEAN_VERSION" -DgenerateBackupPoms=false
+          versions:set -DnewVersion="$CLEAN_VERSION" -DgenerateBackupPoms=false
 
       - name: Publish with Maven
         run: mvn -B deploy
