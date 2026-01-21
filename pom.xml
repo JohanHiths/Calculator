@@ -27,18 +27,18 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.27.6</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>Calculator Repository</name>
-            <url>https://maven.pkg.github.com/johanhiths/Calculator</url>
-
+            <id>github-calculator</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/JohanHiths/Calculator</url>
         </repository>
-    </repositories>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
