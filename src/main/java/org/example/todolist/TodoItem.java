@@ -1,4 +1,4 @@
-package org.example;
+package org.example.todolist;
 
 public class TodoItem {
     private final int id;

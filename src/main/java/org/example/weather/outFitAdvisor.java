@@ -13,7 +13,7 @@ public class outFitAdvisor {
                 var temp = weatherService.getTemperature();
                 if (temp < 0)
                     return "Vinterjacka";
-                if (temp > 15)
+                if (temp >= 15)
                     return "Sweatpants";
                 return null;
             } catch(IllegalStateException e) {
