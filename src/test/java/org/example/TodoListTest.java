@@ -2,9 +2,10 @@ package org.example;
 
 import org.example.todolist.TodoItem;
 import org.example.todolist.TodoList;
-import org.example.todolist.TodoListTask;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -22,7 +23,7 @@ public class TodoListTest {
     void toDoListId() {
         TodoList list = new TodoList();
 
-        TodoItem item = list.add("Milk");
+        TodoItem item = list.add("Milk", LocalDate.of(2026, 1, 20));
 
         assertThat(item.toString()).isEqualTo("Id: 1");
 
@@ -32,8 +33,8 @@ public class TodoListTest {
     void toDoListTwoIds(){
         TodoList list = new TodoList();
 
-        TodoItem item = list.add("Milk");
-        TodoItem item2 = list.add("Bread");
+        TodoItem item = list.add("Milk", LocalDate.of(2026, 1, 20));
+        TodoItem item2 = list.add("Bread", LocalDate.of(2026, 1, 20));
 
         assertThat(item.toString()).isEqualTo("Id: 1");
         assertThat(item2.toString()).isEqualTo("Id: 2");
@@ -44,16 +45,20 @@ public class TodoListTest {
     void todoListRemembersItems() {
         TodoList list = new TodoList();
 
-        list.add("Milk");
-        list.add("Bread");
+        list.add("Milk", LocalDate.of(2026, 1, 20));
+        list.add("Bread", LocalDate.of(2026, 1, 20));
 
         assertThat(list.size()).isEqualTo(2);
     }
 
     @Test
-    void testingTasks() {
-        TodoListTask task = new TodoListTask();
+    void addStoresTaskAndDueInItem() {
+        TodoList list = new TodoList();
 
+        TodoItem item = list.add("Buy milk", LocalDate.of(2026, 1, 20));
+
+        assertThat(item.getTask()).isEqualTo("Buy milk");
+        assertThat(item.getDue()).isEqualTo(LocalDate.of(2026, 1, 20));
     }
 
 
