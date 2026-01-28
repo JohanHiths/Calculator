@@ -1,2 +1,5 @@
-FR1: Systemet ska kunna dividera två tal
-FR2: Systemet ska kunna hantera division med 0
+Project 1: Väder-baserad Klädväljare
+
+FR1: Returnera "Vinterjacka" om temperaturen understiger 0 grader;
+FR2: Returnera "Tshirt" om temperaturen överstiger 15 grader;
+FR3: Lägg till "ta med Paraply" om nederbörd;
