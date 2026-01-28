@@ -9,8 +9,11 @@ public class outFitAdvisor {
 
         }
         public String getClothingAdvice(){
-            if(weatherService.getTemperature() < 0)
+            var temp = weatherService.getTemperature();
+            if(temp < 0)
             return  "Vinterjacka";
+            if(temp > 15)
+                return "Sweatpants";
             return null;
         }
 

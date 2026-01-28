@@ -38,4 +38,11 @@ public class WeatherTest {
 
     }
 
+    @Test
+    void summerTemps(){
+        Mockito.when(weatherService.getTemperature()).thenReturn((float) 15.0);
+        String advice = advisor.getClothingAdvice();
+        assertThat(advice).isEqualTo("Sweatpants");
+    }
+
 }
