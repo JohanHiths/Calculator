@@ -43,5 +43,15 @@ public class WeatherTest {
         String advice = advisor.getClothingAdvice();
         assertThat(advice).isEqualTo("Sweatpants");
     }
+    @Test
+    void defaultAdvice(){
+        Mockito.when(weatherService.getTemperature())
+                .thenThrow(new IllegalStateException());
+
+        assertThat(advisor.getClothingAdvice()).
+                isEqualTo("Jeans and Jacket");
+
+
+    }
 
 }

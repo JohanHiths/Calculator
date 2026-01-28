@@ -8,13 +8,17 @@ public class outFitAdvisor {
             this.weatherService = weatherService;
 
         }
-        public String getClothingAdvice(){
-            var temp = weatherService.getTemperature();
-            if(temp < 0)
-            return  "Vinterjacka";
-            if(temp > 15)
-                return "Sweatpants";
-            return null;
-        }
+        public String getClothingAdvice() {
+            try {
+                var temp = weatherService.getTemperature();
+                if (temp < 0)
+                    return "Vinterjacka";
+                if (temp > 15)
+                    return "Sweatpants";
+                return null;
+            } catch(IllegalStateException e) {
+                return "Jeans and Jacket";
 
+            }
+        }
 }
