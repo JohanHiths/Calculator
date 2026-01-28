@@ -10,6 +10,6 @@ public class toDoListTest {
     void toDoListEmpty(){
         toDoList list = new toDoList();
 
-
+        assertThat(list.size(0)).isEqualTo(0);
     }
 }
