@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class todoListTest {
+
+public class ToDoListTest {
 
     @Test
     void toDoListEmpty(){
@@ -17,7 +18,9 @@ public class todoListTest {
     void toDoListId(){
         toDoList list = new toDoList();
 
-        assertThat(list.Id(1)).isNotNull();
+        TodoItem item = list.add("Milk");
+
+        assertThat(item.toString()).isEqualTo("Id: 1");
 
     }
 }
