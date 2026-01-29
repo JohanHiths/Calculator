@@ -79,8 +79,21 @@ public class TodoListTest {
         list.add("Walk dog", LocalDate.of(2026, 1, 21));
 
         assertThat(list.size()).isEqualTo(2);
-        assertThat(list.get(1).getTask()).isEqualTo("Buy milk");
-        assertThat(list.get(2).getTask()).isEqualTo("Walk dog");
+        assertThat(list.get(0).getTask()).isEqualTo("Buy milk");
+        assertThat(list.get(1).getTask()).isEqualTo("Walk dog");
+    }
+    @Test
+    void canMarkTodoAsDoneById() {
+        TodoList list = new TodoList();
+
+        TodoItem item = list.add("Buy milk", LocalDate.of(2026, 1, 20));
+
+        assertThat(item.isDone()).isFalse();
+
+        boolean result = list.markDone(1);
+
+        assertThat(result).isTrue();
+        assertThat(item.isDone()).isTrue();
     }
 
     }
