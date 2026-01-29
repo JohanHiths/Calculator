@@ -11,4 +11,7 @@ public class TodoListTask {
     public TodoListTask task(String text) {
         return new TodoListTask();
     }
+    public String getTask(){
+        return task;
+    }
 }

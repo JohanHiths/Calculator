@@ -30,6 +30,7 @@ public class TodoListTest {
     }
 
     @DisplayName("När jag lägger till items får de id1 och id2")
+    @Test
     void toDoListTwoIds(){
         TodoList list = new TodoList();
 
@@ -60,7 +61,26 @@ public class TodoListTest {
         assertThat(item.getTask()).isEqualTo("Buy milk");
         assertThat(item.getDue()).isEqualTo(LocalDate.of(2026, 1, 20));
     }
+    @Test
+    void differentTodosHaveDifferentTasksAndDueDates() {
+        TodoList list = new TodoList();
 
+        TodoItem a = list.add("Buy milk", LocalDate.of(2026, 1, 20));
+        TodoItem b = list.add("Walk dog", LocalDate.of(2026, 1, 21));
 
+        assertThat(a.getTask()).isEqualTo("Buy milk");
+        assertThat(b.getTask()).isEqualTo("Walk dog");
+    }
+    @Test
+    void listStoresAndReturnsItemsInInsertionOrder() {
+        TodoList list = new TodoList();
+
+        list.add("Buy milk", LocalDate.of(2026, 1, 20));
+        list.add("Walk dog", LocalDate.of(2026, 1, 21));
+
+        assertThat(list.size()).isEqualTo(2);
+        assertThat(list.get(1).getTask()).isEqualTo("Buy milk");
+        assertThat(list.get(2).getTask()).isEqualTo("Walk dog");
+    }
 
     }

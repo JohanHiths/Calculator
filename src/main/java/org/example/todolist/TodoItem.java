@@ -5,28 +5,33 @@ import java.time.LocalDateTime;
 
 public class TodoItem {
     private final int id;
+    private final String task;
+    private final LocalDate due;
 
-    public TodoItem(int id, String buyMilk, LocalDate localDate) {
+
+    public TodoItem(int id,  String task, LocalDate due) {
         this.id = id;
-
+        this.task = task;
+        this.due = due;
     }
 
-    @Override
-    public String toString() {
-        return "Id: " + id;
-    }
+
 
     public int getId() {
         return id;
     }
 
     public String getTask() {
-        return "";
+        return task;
     }
 
     public LocalDate getDue() {
 
-        return LocalDate.of(2026, 1, 20);
+        return due;
 
+    }
+    @Override
+    public String toString() {
+        return "Id: " + id;
     }
 }

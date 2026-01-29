@@ -1,18 +1,27 @@
 package org.example.todolist;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TodoList {
 
-    public int nextId = 1;
-    public int size = 0;
-    public TodoItem[] items = new TodoItem[100];
+    private int nextId = 1;
+    private int size = 0;
+    private List<TodoItem> items = new ArrayList<>();
+
 
 
     public int size(){
-        return size();
+        return size;
+
     }
-    public TodoItem add(String text, LocalDate localDate) {
-        return new TodoItem(nextId++, "Buy milk", LocalDate.of(2026, 1, 20));
+    public TodoItem add(String task, LocalDate due) {
+        size++;
+        return new TodoItem(nextId++, task, due);
     }
+    public TodoItem get(int index){
+        return items.get(index);
+    }
+
 }
